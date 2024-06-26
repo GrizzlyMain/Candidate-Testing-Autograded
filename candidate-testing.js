@@ -33,21 +33,22 @@ function askQuestion() {
   return candidateAnswers;
 }
 
-function gradeQuiz(correctAnswer, candidateAnswer) {
+function gradeQuiz(correctAnswers, candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-if (correctAnswer === candidateAnswer) {
-  console.log ('You got it right!');
-}
-else {
-  console.log ('Wrong.')
-}
+let candidateAnswerCount = 0;
+correctAnswers = correctAnswers.join().toLowerCase().split(',');
+candidateAnswers = candidateAnswers.join().toLowerCase().split(',');
+for (let i = 0; i < correctAnswers.length; i++){
+  if (correctAnswers[i] === candidateAnswers[i])
+    candidateAnswerCount++;
+  }
 
-
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
-
-
+  //TODO 3.2 use this variable to calculate the candidates score.
+  let grade = (candidateAnswerCount / correctAnswers.length) * 100;  
+  console.log("You got " + grade + "% correct.");
   return grade;
+
 }
 
 function runProgram() {
@@ -55,7 +56,8 @@ function runProgram() {
   // TODO 1.1c: Greet candidate using their name //
   console.log(`Hello, ${candidateName}.`);
   askQuestion();
-  gradeQuiz(this.candidateAnswers);
+  gradeQuiz(correctAnswers, candidateAnswers);
+  
 }
 
 // ----------- Don't write any code or change any code below this line ---------- //
