@@ -34,14 +34,16 @@ function askQuestion() {
 }
 
 function gradeQuiz(correctAnswers, candidateAnswers) {
-
+for (let i = 0; i < correctAnswers.length; i ++){
+  console.log(`You entered ${candidateAnswers[i]} and the correct answer is ${correctAnswers[i]}.`)
+}
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
 let candidateAnswerCount = 0;
 correctAnswers = correctAnswers.join().toLowerCase().split(',');
 candidateAnswers = candidateAnswers.join().toLowerCase().split(',');
 for (let i = 0; i < correctAnswers.length; i++){
   if (correctAnswers[i] === candidateAnswers[i])
-    candidateAnswerCount++;
+       candidateAnswerCount++;
   }
 
   //TODO 3.2 use this variable to calculate the candidates score.
