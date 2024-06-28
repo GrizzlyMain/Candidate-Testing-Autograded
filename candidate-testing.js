@@ -29,23 +29,24 @@ function askQuestion() {
   for (i = 0; i <questions.length; i++){
   userInputAnswer = input.question(questions[i]);
   candidateAnswers.push(userInputAnswer);
+  console.log(`You entered ${candidateAnswers[i]} and the correct answer is ${correctAnswers[i]}.`)
+  
   }
   return candidateAnswers;
 }
 
 function gradeQuiz(correctAnswers, candidateAnswers) {
-for (let i = 0; i < correctAnswers.length; i ++){
-  console.log(`You entered ${candidateAnswers[i]} and the correct answer is ${correctAnswers[i]}.`)
-}
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-let candidateAnswerCount = 0;
+let grade = 0
 correctAnswers = correctAnswers.join().toLowerCase().split(',');
 candidateAnswers = candidateAnswers.join().toLowerCase().split(',');
 for (let i = 0; i < correctAnswers.length; i++){
   if (correctAnswers[i] === candidateAnswers[i])
-       candidateAnswerCount++;
+       grade++;
+
   }
-  let grade = (candidateAnswerCount / correctAnswers.length) * 100;  
+  grade = (grade / correctAnswers.length) * 100;  
+  
   
   if (grade < 80){
     console.log ("You did not pass.");
@@ -58,8 +59,6 @@ for (let i = 0; i < correctAnswers.length; i++){
 
   //TODO 3.2 use this variable to calculate the candidates score.
   return grade;
-   
-  
 
 }
 
