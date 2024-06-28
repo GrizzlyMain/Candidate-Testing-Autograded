@@ -45,11 +45,21 @@ for (let i = 0; i < correctAnswers.length; i++){
   if (correctAnswers[i] === candidateAnswers[i])
        candidateAnswerCount++;
   }
+  let grade = (candidateAnswerCount / correctAnswers.length) * 100;  
+  
+  if (grade < 80){
+    console.log ("You did not pass.");
+  }
+  else{
+    console.log("You passed.");
+  
+}
+  console.log("You got " + grade + "% correct.");
 
   //TODO 3.2 use this variable to calculate the candidates score.
-  let grade = (candidateAnswerCount / correctAnswers.length) * 100;  
-  console.log("You got " + grade + "% correct.");
   return grade;
+   
+  
 
 }
 
