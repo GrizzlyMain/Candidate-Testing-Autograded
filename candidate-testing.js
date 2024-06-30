@@ -8,6 +8,7 @@ let candidateName = "";
 let question = "Who was the first American woman in space? ";
 let correctAnswer = "Sally Ride";
 let candidateAnswer = "";
+let grade = 0;
 
 
 //TODO: Variables for Part 2
@@ -24,44 +25,38 @@ candidateName = input.question('What is your name? ');
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-  candidateAnswers = [];
-  userInputAnswer = '';
-  for (i = 0; i <questions.length; i++){
-  userInputAnswer = input.question(questions[i]);
-  candidateAnswers.push(userInputAnswer);
+  for (let i = 0; i <questions.length; i++){
+  candidateAnswers.push(input.question(questions[i]));
   console.log(`You entered ${candidateAnswers[i]} and the correct answer is ${correctAnswers[i]}.`)
   
   }
   return candidateAnswers;
 }
 
-function gradeQuiz() {
+function gradeQuiz(candidateAnswers) {
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-  let grade = 0
-  correctAnswers = correctAnswers.join().toLowerCase().split(',');
-  candidateAnswers = candidateAnswers.join().toLowerCase().split(',');
+  let gradeNum = 0;
+  //correctAnswers = correctAnswers.join().toLowerCase().split(',');
+  //candidateAnswers = candidateAnswers.join().toLowerCase().split(',');
   for (let i = 0; i < correctAnswers.length; i++){
-    if (correctAnswers[i] === candidateAnswers[i])
-         grade++;
-  
+    if (correctAnswers[i].toLowerCase() === candidateAnswers[i].toLowerCase()){
+         gradeNum = gradeNum + 1;
     }
-    grade = (grade / questions.length) * 100;  
+         
+    } 
     
-    
+    grade = (gradeNum / questions.length) * 100;
+      
     if (grade < 80){
-      console.log ("You did not pass.");
+      console.log (`You did not pass. You got ${gradeNum} out of ${questions.length}. You scored ${grade}%.`);
     }
     else{
-      console.log("You passed.");
+      console.log(`You passed. Congrats! You got ${gradeNum} out of ${questions.length} answers correct. You scored ${grade}%.`);
     
   }
-    console.log("You got " + grade + "% correct.");
-  
-    //TODO 3.2 use this variable to calculate the candidates score.
+    
     return grade;
-  
-
-
+    //TODO 3.2 use this variable to calculate the candidates scor
 }
 
 function runProgram() {
