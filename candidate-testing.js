@@ -35,30 +35,32 @@ function askQuestion() {
   return candidateAnswers;
 }
 
-function gradeQuiz(correctAnswers, candidateAnswers) {
+function gradeQuiz() {
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-let grade = 0
-correctAnswers = correctAnswers.join().toLowerCase().split(',');
-candidateAnswers = candidateAnswers.join().toLowerCase().split(',');
-for (let i = 0; i < correctAnswers.length; i++){
-  if (correctAnswers[i] === candidateAnswers[i])
-       grade++;
-
+  let grade = 0
+  correctAnswers = correctAnswers.join().toLowerCase().split(',');
+  candidateAnswers = candidateAnswers.join().toLowerCase().split(',');
+  for (let i = 0; i < correctAnswers.length; i++){
+    if (correctAnswers[i] === candidateAnswers[i])
+         grade++;
+  
+    }
+    grade = (grade / questions.length) * 100;  
+    
+    
+    if (grade < 80){
+      console.log ("You did not pass.");
+    }
+    else{
+      console.log("You passed.");
+    
   }
-  grade = (grade / correctAnswers.length) * 100;  
+    console.log("You got " + grade + "% correct.");
   
+    //TODO 3.2 use this variable to calculate the candidates score.
+    return grade;
   
-  if (grade < 80){
-    console.log ("You did not pass.");
-  }
-  else{
-    console.log("You passed.");
-  
-}
-  console.log("You got " + grade + "% correct.");
 
-  //TODO 3.2 use this variable to calculate the candidates score.
-  return grade;
 
 }
 
@@ -67,7 +69,7 @@ function runProgram() {
   // TODO 1.1c: Greet candidate using their name //
   console.log(`Hello, ${candidateName}.`);
   askQuestion();
-  gradeQuiz(correctAnswers, candidateAnswers);
+  gradeQuiz(this.candidateAnswers);
   
 }
 
